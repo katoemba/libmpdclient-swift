@@ -11,7 +11,6 @@
 		C543F626234673AC00E5CE84 /* protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C543F5F32346732D00E5CE84 /* protocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C543F627234673AC00E5CE84 /* error.h in Headers */ = {isa = PBXBuildFile; fileRef = C543F5F42346732D00E5CE84 /* error.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C543F628234673AC00E5CE84 /* recv.h in Headers */ = {isa = PBXBuildFile; fileRef = C543F5F52346732D00E5CE84 /* recv.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C543F629234673AC00E5CE84 /* client.h in Headers */ = {isa = PBXBuildFile; fileRef = C543F5F62346732D00E5CE84 /* client.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C543F62A234673AC00E5CE84 /* song.h in Headers */ = {isa = PBXBuildFile; fileRef = C543F5F72346732D00E5CE84 /* song.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C543F62B234673AC00E5CE84 /* response.h in Headers */ = {isa = PBXBuildFile; fileRef = C543F5F82346732D00E5CE84 /* response.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C543F62C234673AC00E5CE84 /* status.h in Headers */ = {isa = PBXBuildFile; fileRef = C543F5F92346732E00E5CE84 /* status.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -100,7 +99,6 @@
 		C543F5F32346732D00E5CE84 /* protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = protocol.h; sourceTree = "<group>"; };
 		C543F5F42346732D00E5CE84 /* error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
 		C543F5F52346732D00E5CE84 /* recv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = recv.h; sourceTree = "<group>"; };
-		C543F5F62346732D00E5CE84 /* client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = client.h; sourceTree = "<group>"; };
 		C543F5F72346732D00E5CE84 /* song.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = song.h; sourceTree = "<group>"; };
 		C543F5F82346732D00E5CE84 /* response.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = response.h; sourceTree = "<group>"; };
 		C543F5F92346732E00E5CE84 /* status.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = status.h; sourceTree = "<group>"; };
@@ -212,7 +210,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -220,7 +218,6 @@
 				OBJ_60 /* Tests */,
 				OBJ_64 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_58 /* include */ = {
@@ -230,7 +227,6 @@
 				C543F5F32346732D00E5CE84 /* protocol.h */,
 				C543F5F42346732D00E5CE84 /* error.h */,
 				C543F5F52346732D00E5CE84 /* recv.h */,
-				C543F5F62346732D00E5CE84 /* client.h */,
 				C543F5F72346732D00E5CE84 /* song.h */,
 				C543F5F82346732D00E5CE84 /* response.h */,
 				C543F5F92346732E00E5CE84 /* status.h */,
@@ -394,7 +390,6 @@
 				C543F634234673AC00E5CE84 /* output.h in Headers */,
 				C543F63E234673AC00E5CE84 /* audio_format.h in Headers */,
 				C543F63D234673AC00E5CE84 /* password.h in Headers */,
-				C543F629234673AC00E5CE84 /* client.h in Headers */,
 				C543F62E234673AC00E5CE84 /* compiler.h in Headers */,
 				C543F62F234673AC00E5CE84 /* settings.h in Headers */,
 				C543F633234673AC00E5CE84 /* player.h in Headers */,
@@ -459,7 +454,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_64 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

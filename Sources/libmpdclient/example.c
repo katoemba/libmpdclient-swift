@@ -30,7 +30,7 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/client.h"
+#include "include/libmpdclient.h"
 #include "include/status.h"
 #include "include/entity.h"
 #include "include/search.h"
