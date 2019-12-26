@@ -53,6 +53,7 @@
 #include "entity.h"
 #include "fingerprint.h"
 #include "idle.h"
+#include "isend.h"
 #include "list.h"
 #include "message.h"
 #include "mixer.h"
@@ -72,6 +73,6 @@
 #include "stats.h"
 #include "status.h"
 #include "sticker.h"
-#include "version.h.in"
+#include "version.h"
 
 #endif
