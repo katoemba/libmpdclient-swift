@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -29,7 +29,7 @@
 #ifndef MPD_IASYNC_H
 #define MPD_IASYNC_H
 
-#include "include/async.h"
+#include <mpd/async.h>
 
 struct mpd_error_info;
 

@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -30,12 +30,12 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/connection.h"
-#include "include/settings.h"
-#include "include/async.h"
-#include "include/parser.h"
-#include "include/password.h"
-#include "include/socket.h"
+#include <mpd/connection.h>
+#include <mpd/settings.h>
+#include <mpd/async.h>
+#include <mpd/parser.h>
+#include <mpd/password.h>
+#include <mpd/socket.h>
 
 #include "resolver.h"
 #include "sync.h"
@@ -49,12 +49,6 @@
 #include <string.h>
 
 #define MPD_WELCOME_MESSAGE	"OK MPD "
-#ifndef DEFAULT_HOST
-#define DEFAULT_HOST "localhost"
-#endif
-#ifndef DEFAULT_PORT
-#define DEFAULT_PORT 6600
-#endif
 
 static bool
 mpd_parse_welcome(struct mpd_connection *connection, const char *output)
@@ -79,7 +73,7 @@ mpd_parse_welcome(struct mpd_connection *connection, const char *output)
 	}
 
 	if (*test == '.') {
-        connection->version[1] = (uint32_t)strtoul(test + 1, &test, 10);
+		connection->version[1] = (uint32_t)strtoul(test + 1, &test, 10);
 		if (*test == '.')
 			connection->version[2] = (uint32_t)strtoul(test + 1, &test, 10);
 		else

@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -74,13 +74,13 @@ mpd_kvlist_deinit(struct mpd_kvlist *l)
 //static char *
 //strndup(const char *s, size_t length)
 //{
-//    char *p = malloc(length + 1);
-//    if (p != NULL) {
-//        memcpy(p, s, length);
-//        p[length] = 0;
-//    }
-//    
-//    return p;
+//	char *p = malloc(length + 1);
+//	if (p != NULL) {
+//		memcpy(p, s, length);
+//		p[length] = 0;
+//	}
+//
+//	return p;
 //}
 //#endif
 

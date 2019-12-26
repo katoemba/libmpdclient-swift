@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -29,12 +29,12 @@
 #ifndef MPD_SOCKET_H
 #define MPD_SOCKET_H
 
-#include "include/socket.h"
+#include <mpd/socket.h>
 
 #include <stdbool.h>
 
 #ifdef _WIN32
-#  include <winsock2.h"
+#  include <winsock2.h>
 #else
 #  include <errno.h>
 #endif
@@ -96,7 +96,7 @@ mpd_socket_close(mpd_socket_t fd);
 /**
  * Sets (or unsets) keepalive on a socket descriptor.
  */
-void
+int
 mpd_socket_keepalive(mpd_socket_t fd, bool keepalive);
 
 #endif

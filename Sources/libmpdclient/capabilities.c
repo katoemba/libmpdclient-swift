@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,10 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/capabilities.h"
-#include "include/send.h"
-#include "include/recv.h"
-#include "include/response.h"
+#include <mpd/capabilities.h>
+#include <mpd/send.h>
+#include <mpd/recv.h>
+#include <mpd/response.h>
 #include "internal.h"
 
 #include <assert.h>

@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -30,8 +30,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/list.h"
-#include "include/send.h"
+#include <mpd/list.h>
+#include <mpd/send.h>
 #include "internal.h"
 #include "isend.h"
 
@@ -82,6 +82,8 @@ mpd_command_list_end(struct mpd_connection *connection)
 
 	connection->sending_command_list = false;
 	success = mpd_send_command(connection, "command_list_end", NULL);
+	/* sending_command_list will be cleared when the user requests the
+	   command list response (a function that calls mpd_recv_pair()) */
 	connection->sending_command_list = true;
 	if (!success)
 		return false;

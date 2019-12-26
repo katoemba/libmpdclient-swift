@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -30,8 +30,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/output.h"
-#include "include/pair.h"
+#include <mpd/output.h>
+#include <mpd/pair.h>
 #include "kvlist.h"
 
 #include <assert.h>
@@ -79,8 +79,7 @@ mpd_output_feed(struct mpd_output *output, const struct mpd_pair *pair)
 		return false;
 
 	if (strcmp(pair->name, "outputname") == 0) {
-        if (output->name != NULL)
-            free(output->name);
+		free(output->name);
 		output->name = strdup(pair->value);
 	} else if (strcmp(pair->name, "outputenabled") == 0)
 		output->enabled = atoi(pair->value) != 0;
@@ -103,10 +102,8 @@ mpd_output_free(struct mpd_output *output)
 {
 	assert(output != NULL);
 
-    if (output->name != NULL)
-        free(output->name);
-    if (output->plugin != NULL)
-        free(output->plugin);
+	free(output->name);
+	free(output->plugin);
 	mpd_kvlist_deinit(&output->attributes);
 	free(output);
 }

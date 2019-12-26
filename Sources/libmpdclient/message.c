@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/message.h"
-#include "include/pair.h"
+#include <mpd/message.h>
+#include <mpd/pair.h>
 
 #include <assert.h>
 #include <stddef.h>
@@ -67,9 +67,7 @@ mpd_message_feed(struct mpd_message *output, const struct mpd_pair *pair)
 		return false;
 
 	if (strcmp(pair->name, "message") == 0) {
-		if (output->text != NULL)
-			free(output->text);
-
+		free(output->text);
 		output->text = strdup(pair->value);
 	}
 

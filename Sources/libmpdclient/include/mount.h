@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -80,7 +80,7 @@ bool
 mpd_mount_feed(struct mpd_mount *mnt, const struct mpd_pair *pair);
 
 /**
- * Frees a mpd_mount object returned from mpd_recv_mount().
+ * Frees a mpd_mount object returned from mpd_recv_mount() or mpd_mount_begin().
  *
  * @since libmpdclient 2.16
  */

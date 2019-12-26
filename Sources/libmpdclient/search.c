@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -30,10 +30,10 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    */
 
-#include "include/search.h"
-#include "include/send.h"
-#include "include/pair.h"
-#include "include/recv.h"
+#include <mpd/search.h>
+#include <mpd/send.h>
+#include <mpd/pair.h>
+#include <mpd/recv.h>
 #include "internal.h"
 #include "iso8601.h"
 
@@ -385,10 +385,8 @@ mpd_search_cancel(struct mpd_connection *connection)
 {
 	assert(connection != NULL);
 
-	if (connection->request != NULL) {
-		free(connection->request);
-		connection->request = NULL;
-	}
+	free(connection->request);
+	connection->request = NULL;
 }
 
 struct mpd_pair *
@@ -429,11 +427,13 @@ mpd_search_add_db_songs_to_playlist(struct mpd_connection *connection,
 	const size_t len = 13 + strlen(arg) + 2;
 	connection->request = malloc(len);
 	if (connection->request == NULL) {
+		free(arg);
 		mpd_error_code(&connection->error, MPD_ERROR_OOM);
 		return false;
 	}
 
 	snprintf(connection->request, len, "searchaddpl \"%s\" ", arg);
 
+	free(arg);
 	return true;
 }

@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -31,8 +31,9 @@
 #include "ierror.h"
 #include "quote.h"
 #include "socket.h"
+#include "binary.h"
 
-#include "include/socket.h"
+#include <mpd/socket.h>
 
 #include <assert.h>
 #include <stdbool.h>
@@ -137,14 +138,14 @@ mpd_async_get_fd(const struct mpd_async *async)
 	return async->fd;
 }
 
-void
+bool
 mpd_async_set_keepalive(struct mpd_async *async,
 			bool keepalive)
 {
 	assert(async != NULL);
 	assert(async->fd != MPD_INVALID_SOCKET);
 
-	mpd_socket_keepalive(async->fd, keepalive);
+	return mpd_socket_keepalive(async->fd, keepalive) == 0;
 }
 
 enum mpd_async_event
@@ -378,4 +379,19 @@ mpd_async_recv_line(struct mpd_async *async)
 	mpd_buffer_consume(&async->input, newline + 1 - src);
 
 	return src;
+}
+
+size_t
+mpd_async_recv_raw(struct mpd_async *async, void *dest, size_t length)
+{
+	size_t max_size = mpd_buffer_size(&async->input);
+	if (max_size == 0)
+		return 0;
+
+	if (length > max_size)
+		length = max_size;
+
+	memcpy(dest, mpd_buffer_read(&async->input), length);
+	mpd_buffer_consume(&async->input, length);
+	return length;
 }

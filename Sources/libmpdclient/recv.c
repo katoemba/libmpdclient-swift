@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -26,15 +26,58 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/recv.h"
-#include "include/pair.h"
-#include "include/parser.h"
+#include <mpd/recv.h>
+#include <mpd/pair.h>
+#include <mpd/parser.h>
 #include "internal.h"
 #include "iasync.h"
+#include "binary.h"
 #include "sync.h"
 
 #include <string.h>
 #include <stdlib.h>
+
+bool
+mpd_recv_binary(struct mpd_connection *connection, void *data, size_t length)
+{
+	assert(connection != NULL);
+
+	if (mpd_error_is_defined(&connection->error))
+		return false;
+
+	/* check if the caller has returned the previous pair */
+	assert(connection->pair_state != PAIR_STATE_FLOATING);
+
+	while (length > 0) {
+		size_t nbytes = mpd_sync_recv_raw(connection->async,
+						  mpd_connection_timeout(connection),
+						  data, length);
+		if (nbytes == 0) {
+			mpd_connection_sync_error(connection);
+			return false;
+		}
+
+		data = ((char *)data) + nbytes;
+		length -= nbytes;
+	}
+
+	char newline;
+	if (mpd_sync_recv_raw(connection->async,
+			      mpd_connection_timeout(connection),
+			      &newline, sizeof(newline)) == 0) {
+		mpd_connection_sync_error(connection);
+		return false;
+	}
+
+	if (newline != '\n') {
+		mpd_error_code(&connection->error, MPD_ERROR_MALFORMED);
+		mpd_error_message(&connection->error,
+				  "Malformed binary response");
+		return false;
+	}
+
+	return true;
+}
 
 struct mpd_pair *
 mpd_recv_pair(struct mpd_connection *connection)

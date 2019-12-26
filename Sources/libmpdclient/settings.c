@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -26,19 +26,12 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/settings.h"
+#include <mpd/settings.h>
 //#include "config.h"
 
 #include <assert.h>
 #include <string.h>
 #include <stdlib.h>
-
-#ifndef DEFAULT_HOST
-#define DEFAULT_HOST "localhost"
-#endif
-#ifndef DEFAULT_PORT
-#define DEFAULT_PORT 6600
-#endif
 
 struct mpd_settings {
 	char *host;

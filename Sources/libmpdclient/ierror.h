@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,9 @@
 #ifndef MPD_IERROR_H
 #define MPD_IERROR_H
 
-#include "include/error.h"
-#include "include/protocol.h"
-#include "include/compiler.h"
+#include <mpd/error.h>
+#include <mpd/protocol.h>
+#include <mpd/compiler.h>
 
 #include <assert.h>
 #include <stdbool.h>

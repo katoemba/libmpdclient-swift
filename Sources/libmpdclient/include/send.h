@@ -1,5 +1,5 @@
 /* libmpdclient
-   (c) 2003-2018 The Music Player Daemon Project
+   (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
 
    Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@ extern "C" {
  * @param command the command to be sent
  * @return true on success
  */
-mpd_sentinel
+//mpd_sentinel
 bool
 mpd_send_command(struct mpd_connection *connection, const char *command, ...);
 
