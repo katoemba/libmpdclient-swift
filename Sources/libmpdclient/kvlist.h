@@ -29,8 +29,8 @@
 #ifndef MPD_KVLIST_H
 #define MPD_KVLIST_H
 
-#include <mpd/pair.h>
-#include <mpd/compiler.h>
+#include "include/pair.h"
+#include "include/compiler.h"
 
 #include <stddef.h>
 

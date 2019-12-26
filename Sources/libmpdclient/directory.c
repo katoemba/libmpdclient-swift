@@ -30,8 +30,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/directory.h>
-#include <mpd/pair.h>
+#include "include/directory.h"
+#include "include/pair.h"
 #include "uri.h"
 #include "iso8601.h"
 

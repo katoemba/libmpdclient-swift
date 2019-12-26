@@ -26,9 +26,9 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/partition.h>
-#include <mpd/send.h>
-#include <mpd/response.h>
+#include "include/partition.h"
+#include "include/send.h"
+#include "include/response.h"
 #include "internal.h"
 #include "run.h"
 

@@ -30,8 +30,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/entity.h>
-#include <mpd/playlist.h>
+#include "include/entity.h"
+#include "include/playlist.h"
 #include "internal.h"
 
 #include <stdlib.h>

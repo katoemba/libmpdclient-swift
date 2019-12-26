@@ -30,12 +30,12 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/client.h>
-#include <mpd/status.h>
-#include <mpd/entity.h>
-#include <mpd/search.h>
-#include <mpd/tag.h>
-#include <mpd/message.h>
+#include "include/client.h"
+#include "include/status.h"
+#include "include/entity.h"
+#include "include/search.h"
+#include "include/tag.h"
+#include "include/message.h"
 
 #include <assert.h>
 #include <stdio.h>

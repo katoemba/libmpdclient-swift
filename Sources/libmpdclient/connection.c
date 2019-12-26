@@ -30,12 +30,12 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/connection.h>
-#include <mpd/settings.h>
-#include <mpd/async.h>
-#include <mpd/parser.h>
-#include <mpd/password.h>
-#include <mpd/socket.h>
+#include "include/connection.h"
+#include "include/settings.h"
+#include "include/async.h"
+#include "include/parser.h"
+#include "include/password.h"
+#include "include/socket.h"
 
 #include "resolver.h"
 #include "sync.h"

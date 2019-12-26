@@ -26,8 +26,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/parser.h>
-#include <mpd/protocol.h>
+#include "include/parser.h"
+#include "include/protocol.h"
 
 #include <assert.h>
 #include <stdlib.h>

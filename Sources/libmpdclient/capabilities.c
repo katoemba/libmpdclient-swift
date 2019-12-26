@@ -26,10 +26,10 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/capabilities.h>
-#include <mpd/send.h>
-#include <mpd/recv.h>
-#include <mpd/response.h>
+#include "include/capabilities.h"
+#include "include/send.h"
+#include "include/recv.h"
+#include "include/response.h"
 #include "internal.h"
 
 #include <assert.h>

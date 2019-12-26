@@ -26,10 +26,10 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/player.h>
-#include <mpd/send.h>
-#include <mpd/song.h>
-#include <mpd/response.h>
+#include "include/player.h"
+#include "include/send.h"
+#include "include/song.h"
+#include "include/response.h"
 #include "isend.h"
 #include "run.h"
 

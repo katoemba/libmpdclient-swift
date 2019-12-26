@@ -26,9 +26,9 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/mixer.h>
-#include <mpd/send.h>
-#include <mpd/response.h>
+#include "include/mixer.h"
+#include "include/send.h"
+#include "include/response.h"
 #include "isend.h"
 #include "run.h"
 

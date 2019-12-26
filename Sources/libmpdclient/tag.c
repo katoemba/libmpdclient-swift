@@ -30,7 +30,7 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/tag.h>
+#include "include/tag.h"
 
 #include <assert.h>
 #include <string.h>

@@ -30,8 +30,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/list.h>
-#include <mpd/send.h>
+#include "include/list.h"
+#include "include/send.h"
 #include "internal.h"
 #include "isend.h"
 

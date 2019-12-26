@@ -26,11 +26,11 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/database.h>
-#include <mpd/send.h>
-#include <mpd/recv.h>
-#include <mpd/pair.h>
-#include <mpd/response.h>
+#include "include/database.h"
+#include "include/send.h"
+#include "include/recv.h"
+#include "include/pair.h"
+#include "include/response.h"
 #include "run.h"
 
 #include <stddef.h>

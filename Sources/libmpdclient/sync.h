@@ -36,7 +36,7 @@
 #ifndef MPD_SYNC_H
 #define MPD_SYNC_H
 
-#include <mpd/compiler.h>
+#include "include/compiler.h"
 
 #include <stdbool.h>
 #include <stdarg.h>

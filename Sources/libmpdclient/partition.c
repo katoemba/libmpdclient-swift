@@ -26,8 +26,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/pair.h>
-#include <mpd/partition.h>
+#include "include/pair.h"
+#include "include/partition.h"
 
 #include <assert.h>
 #include <stddef.h>

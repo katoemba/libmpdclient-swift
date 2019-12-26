@@ -29,7 +29,7 @@
 #ifndef MPD_INTERNAL_AUDIO_FORMAT_H
 #define MPD_INTERNAL_AUDIO_FORMAT_H
 
-#include <mpd/audio_format.h>
+#include "include/audio_format.h"
 
 #include <stdbool.h>
 

@@ -26,8 +26,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/directory.h>
-#include <mpd/recv.h>
+#include "include/directory.h"
+#include "include/recv.h"
 #include "internal.h"
 
 #include <errno.h>

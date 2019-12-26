@@ -31,9 +31,9 @@
  *
  */
 
-#include <mpd/status.h>
-#include <mpd/send.h>
-#include <mpd/recv.h>
+#include "include/status.h"
+#include "include/send.h"
+#include "include/recv.h"
 #include "internal.h"
 #include "run.h"
 

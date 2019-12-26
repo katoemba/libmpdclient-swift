@@ -31,9 +31,9 @@
  *
  */
 
-#include <mpd/stats.h>
-#include <mpd/send.h>
-#include <mpd/recv.h>
+#include "include/stats.h"
+#include "include/send.h"
+#include "include/recv.h"
 #include "internal.h"
 
 #include <assert.h>

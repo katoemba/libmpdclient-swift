@@ -29,9 +29,9 @@
 #ifndef MPD_IERROR_H
 #define MPD_IERROR_H
 
-#include <mpd/error.h>
-#include <mpd/protocol.h>
-#include <mpd/compiler.h>
+#include "include/error.h"
+#include "include/protocol.h"
+#include "include/compiler.h"
 
 #include <assert.h>
 #include <stdbool.h>

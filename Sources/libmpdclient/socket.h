@@ -29,7 +29,7 @@
 #ifndef MPD_SOCKET_H
 #define MPD_SOCKET_H
 
-#include <mpd/socket.h>
+#include "include/socket.h"
 
 #include <stdbool.h>
 

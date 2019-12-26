@@ -29,7 +29,7 @@
 #ifndef MPD_INTERNAL_H
 #define MPD_INTERNAL_H
 
-#include <mpd/pair.h>
+#include "include/pair.h"
 
 #include "ierror.h"
 

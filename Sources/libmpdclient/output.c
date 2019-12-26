@@ -30,8 +30,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/output.h>
-#include <mpd/pair.h>
+#include "include/output.h"
+#include "include/pair.h"
 #include "kvlist.h"
 
 #include <assert.h>

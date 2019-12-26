@@ -41,6 +41,17 @@
 		C543F645234673AC00E5CE84 /* capabilities.h in Headers */ = {isa = PBXBuildFile; fileRef = C543F6132346732E00E5CE84 /* capabilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C543F646234673AC00E5CE84 /* queue.h in Headers */ = {isa = PBXBuildFile; fileRef = C543F6142346732E00E5CE84 /* queue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C543F647234673AC00E5CE84 /* playlist.h in Headers */ = {isa = PBXBuildFile; fileRef = C543F6152346732E00E5CE84 /* playlist.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5F9176823B57E1300AD044D /* partition.c in Sources */ = {isa = PBXBuildFile; fileRef = C5F9176123B57E1300AD044D /* partition.c */; };
+		C5F9176923B57E1300AD044D /* cpartition.c in Sources */ = {isa = PBXBuildFile; fileRef = C5F9176223B57E1300AD044D /* cpartition.c */; };
+		C5F9176A23B57E1300AD044D /* binary.h in Headers */ = {isa = PBXBuildFile; fileRef = C5F9176323B57E1300AD044D /* binary.h */; };
+		C5F9176B23B57E1400AD044D /* neighbor.c in Sources */ = {isa = PBXBuildFile; fileRef = C5F9176423B57E1300AD044D /* neighbor.c */; };
+		C5F9176C23B57E1400AD044D /* readpicture.h in Headers */ = {isa = PBXBuildFile; fileRef = C5F9176523B57E1300AD044D /* readpicture.h */; };
+		C5F9176D23B57E1400AD044D /* readpicture.c in Sources */ = {isa = PBXBuildFile; fileRef = C5F9176623B57E1300AD044D /* readpicture.c */; };
+		C5F9176E23B57E1400AD044D /* cneighbor.c in Sources */ = {isa = PBXBuildFile; fileRef = C5F9176723B57E1300AD044D /* cneighbor.c */; };
+		C5F9177323B57E2300AD044D /* neighbor.h in Headers */ = {isa = PBXBuildFile; fileRef = C5F9176F23B57E2300AD044D /* neighbor.h */; };
+		C5F9177423B57E2300AD044D /* partition.h in Headers */ = {isa = PBXBuildFile; fileRef = C5F9177023B57E2300AD044D /* partition.h */; };
+		C5F9177523B57E2300AD044D /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = C5F9177123B57E2300AD044D /* version.h */; };
+		C5F9177623B57E2300AD044D /* client.h in Headers */ = {isa = PBXBuildFile; fileRef = C5F9177223B57E2300AD044D /* client.h */; };
 		OBJ_100 /* password.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* password.c */; };
 		OBJ_101 /* player.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* player.c */; };
 		OBJ_102 /* playlist.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* playlist.c */; };
@@ -105,7 +116,6 @@
 		C543F5FA2346732E00E5CE84 /* tag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tag.h; sourceTree = "<group>"; };
 		C543F5FB2346732E00E5CE84 /* compiler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = compiler.h; sourceTree = "<group>"; };
 		C543F5FC2346732E00E5CE84 /* settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = settings.h; sourceTree = "<group>"; };
-		C543F5FD2346732E00E5CE84 /* version.h.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = version.h.in; sourceTree = "<group>"; };
 		C543F5FE2346732E00E5CE84 /* parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
 		C543F5FF2346732E00E5CE84 /* idle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = idle.h; sourceTree = "<group>"; };
 		C543F6002346732E00E5CE84 /* message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = message.h; sourceTree = "<group>"; };
@@ -145,6 +155,17 @@
 		C543F6222346734E00E5CE84 /* ierror.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ierror.h; sourceTree = "<group>"; };
 		C543F6232346734F00E5CE84 /* isend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = isend.h; sourceTree = "<group>"; };
 		C543F6242346734F00E5CE84 /* internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = internal.h; sourceTree = "<group>"; };
+		C5F9176123B57E1300AD044D /* partition.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = partition.c; sourceTree = "<group>"; };
+		C5F9176223B57E1300AD044D /* cpartition.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpartition.c; sourceTree = "<group>"; };
+		C5F9176323B57E1300AD044D /* binary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = binary.h; sourceTree = "<group>"; };
+		C5F9176423B57E1300AD044D /* neighbor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = neighbor.c; sourceTree = "<group>"; };
+		C5F9176523B57E1300AD044D /* readpicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = readpicture.h; sourceTree = "<group>"; };
+		C5F9176623B57E1300AD044D /* readpicture.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = readpicture.c; sourceTree = "<group>"; };
+		C5F9176723B57E1300AD044D /* cneighbor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cneighbor.c; sourceTree = "<group>"; };
+		C5F9176F23B57E2300AD044D /* neighbor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = neighbor.h; sourceTree = "<group>"; };
+		C5F9177023B57E2300AD044D /* partition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = partition.h; sourceTree = "<group>"; };
+		C5F9177123B57E2300AD044D /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		C5F9177223B57E2300AD044D /* client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = client.h; sourceTree = "<group>"; };
 		OBJ_10 /* audio_format.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = audio_format.c; sourceTree = "<group>"; };
 		OBJ_11 /* capabilities.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = capabilities.c; sourceTree = "<group>"; };
 		OBJ_12 /* cmessage.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cmessage.c; sourceTree = "<group>"; };
@@ -223,6 +244,10 @@
 		OBJ_58 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				C5F9177223B57E2300AD044D /* client.h */,
+				C5F9176F23B57E2300AD044D /* neighbor.h */,
+				C5F9177023B57E2300AD044D /* partition.h */,
+				C5F9177123B57E2300AD044D /* version.h */,
 				C543F5F22346732D00E5CE84 /* connection.h */,
 				C543F5F32346732D00E5CE84 /* protocol.h */,
 				C543F5F42346732D00E5CE84 /* error.h */,
@@ -233,9 +258,9 @@
 				C543F5FA2346732E00E5CE84 /* tag.h */,
 				C543F5FB2346732E00E5CE84 /* compiler.h */,
 				C543F5FC2346732E00E5CE84 /* settings.h */,
-				C543F5FD2346732E00E5CE84 /* version.h.in */,
 				C543F5FE2346732E00E5CE84 /* parser.h */,
 				C543F5FF2346732E00E5CE84 /* idle.h */,
+				C543F6232346734F00E5CE84 /* isend.h */,
 				C543F6002346732E00E5CE84 /* message.h */,
 				C543F6012346732E00E5CE84 /* player.h */,
 				C543F6022346732E00E5CE84 /* output.h */,
@@ -289,13 +314,19 @@
 		OBJ_8 /* libmpdclient */ = {
 			isa = PBXGroup;
 			children = (
+				C5F9176323B57E1300AD044D /* binary.h */,
+				C5F9176723B57E1300AD044D /* cneighbor.c */,
+				C5F9176223B57E1300AD044D /* cpartition.c */,
+				C5F9176423B57E1300AD044D /* neighbor.c */,
+				C5F9176123B57E1300AD044D /* partition.c */,
+				C5F9176623B57E1300AD044D /* readpicture.c */,
+				C5F9176523B57E1300AD044D /* readpicture.h */,
 				C543F61F2346734E00E5CE84 /* buffer.h */,
 				C543F61B2346734E00E5CE84 /* fd_util.h */,
 				C543F6182346734E00E5CE84 /* iaf.h */,
 				C543F61E2346734E00E5CE84 /* iasync.h */,
 				C543F6222346734E00E5CE84 /* ierror.h */,
 				C543F6242346734F00E5CE84 /* internal.h */,
-				C543F6232346734F00E5CE84 /* isend.h */,
 				C543F61C2346734E00E5CE84 /* iso8601.h */,
 				C543F61A2346734E00E5CE84 /* kvlist.h */,
 				C543F6212346734E00E5CE84 /* quote.h */,
@@ -371,15 +402,19 @@
 				C543F640234673AC00E5CE84 /* sticker.h in Headers */,
 				C543F62A234673AC00E5CE84 /* song.h in Headers */,
 				C543F63A234673AC00E5CE84 /* entity.h in Headers */,
+				C5F9177523B57E2300AD044D /* version.h in Headers */,
 				C543F63F234673AC00E5CE84 /* mount.h in Headers */,
 				C543F647234673AC00E5CE84 /* playlist.h in Headers */,
+				C5F9177623B57E2300AD044D /* client.h in Headers */,
 				C543F628234673AC00E5CE84 /* recv.h in Headers */,
 				C543F643234673AC00E5CE84 /* socket.h in Headers */,
 				C543F63C234673AC00E5CE84 /* send.h in Headers */,
 				C543F62C234673AC00E5CE84 /* status.h in Headers */,
+				C5F9176A23B57E1300AD044D /* binary.h in Headers */,
 				C543F625234673AC00E5CE84 /* connection.h in Headers */,
 				C543F626234673AC00E5CE84 /* protocol.h in Headers */,
 				C543F63B234673AC00E5CE84 /* pair.h in Headers */,
+				C5F9176C23B57E1400AD044D /* readpicture.h in Headers */,
 				C543F62D234673AC00E5CE84 /* tag.h in Headers */,
 				C543F636234673AC00E5CE84 /* list.h in Headers */,
 				C543F639234673AC00E5CE84 /* database.h in Headers */,
@@ -390,11 +425,13 @@
 				C543F634234673AC00E5CE84 /* output.h in Headers */,
 				C543F63E234673AC00E5CE84 /* audio_format.h in Headers */,
 				C543F63D234673AC00E5CE84 /* password.h in Headers */,
+				C5F9177323B57E2300AD044D /* neighbor.h in Headers */,
 				C543F62E234673AC00E5CE84 /* compiler.h in Headers */,
 				C543F62F234673AC00E5CE84 /* settings.h in Headers */,
 				C543F633234673AC00E5CE84 /* player.h in Headers */,
 				C543F631234673AC00E5CE84 /* idle.h in Headers */,
 				C543F642234673AC00E5CE84 /* fingerprint.h in Headers */,
+				C5F9177423B57E2300AD044D /* partition.h in Headers */,
 				C543F627234673AC00E5CE84 /* error.h in Headers */,
 				C543F630234673AC00E5CE84 /* parser.h in Headers */,
 				C543F646234673AC00E5CE84 /* queue.h in Headers */,
@@ -495,7 +532,10 @@
 				OBJ_86 /* example.c in Sources */,
 				OBJ_87 /* fd_util.c in Sources */,
 				OBJ_88 /* fingerprint.c in Sources */,
+				C5F9176B23B57E1400AD044D /* neighbor.c in Sources */,
 				OBJ_89 /* idle.c in Sources */,
+				C5F9176823B57E1300AD044D /* partition.c in Sources */,
+				C5F9176923B57E1300AD044D /* cpartition.c in Sources */,
 				OBJ_90 /* ierror.c in Sources */,
 				OBJ_91 /* iso8601.c in Sources */,
 				OBJ_92 /* kvlist.c in Sources */,
@@ -508,6 +548,7 @@
 				OBJ_99 /* parser.c in Sources */,
 				OBJ_100 /* password.c in Sources */,
 				OBJ_101 /* player.c in Sources */,
+				C5F9176D23B57E1400AD044D /* readpicture.c in Sources */,
 				OBJ_102 /* playlist.c in Sources */,
 				OBJ_103 /* queue.c in Sources */,
 				OBJ_104 /* quote.c in Sources */,
@@ -515,6 +556,7 @@
 				OBJ_106 /* recv.c in Sources */,
 				OBJ_107 /* resolver.c in Sources */,
 				OBJ_108 /* response.c in Sources */,
+				C5F9176E23B57E1400AD044D /* cneighbor.c in Sources */,
 				OBJ_109 /* rplaylist.c in Sources */,
 				OBJ_110 /* run.c in Sources */,
 				OBJ_111 /* search.c in Sources */,

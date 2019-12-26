@@ -30,8 +30,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/stats.h>
-#include <mpd/pair.h>
+#include "include/stats.h"
+#include "include/pair.h"
 
 #include <assert.h>
 #include <stdlib.h>

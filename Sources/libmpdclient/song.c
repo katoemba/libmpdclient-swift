@@ -30,10 +30,10 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/song.h>
-#include <mpd/audio_format.h>
-#include <mpd/pair.h>
-#include <mpd/recv.h>
+#include "include/song.h"
+#include "include/audio_format.h"
+#include "include/pair.h"
+#include "include/recv.h"
 #include "internal.h"
 #include "iso8601.h"
 #include "uri.h"

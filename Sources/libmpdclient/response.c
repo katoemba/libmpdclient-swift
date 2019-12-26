@@ -30,8 +30,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/response.h>
-#include <mpd/recv.h>
+#include "include/response.h"
+#include "include/recv.h"
 #include "internal.h"
 
 #include <assert.h>

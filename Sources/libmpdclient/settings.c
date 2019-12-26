@@ -26,7 +26,7 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <mpd/settings.h>
+#include "include/settings.h"
 //#include "config.h"
 
 #include <assert.h>
