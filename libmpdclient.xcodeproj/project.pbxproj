@@ -89,7 +89,6 @@
 		OBJ_83 /* directory.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* directory.c */; };
 		OBJ_84 /* entity.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* entity.c */; };
 		OBJ_85 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* error.c */; };
-		OBJ_86 /* example.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* example.c */; };
 		OBJ_87 /* fd_util.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* fd_util.c */; };
 		OBJ_88 /* fingerprint.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* fingerprint.c */; };
 		OBJ_89 /* idle.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* idle.c */; };
@@ -180,7 +179,6 @@
 		OBJ_20 /* directory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = directory.c; sourceTree = "<group>"; };
 		OBJ_21 /* entity.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = entity.c; sourceTree = "<group>"; };
 		OBJ_22 /* error.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
-		OBJ_23 /* example.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = example.c; sourceTree = "<group>"; };
 		OBJ_24 /* fd_util.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fd_util.c; sourceTree = "<group>"; };
 		OBJ_25 /* fingerprint.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fingerprint.c; sourceTree = "<group>"; };
 		OBJ_26 /* idle.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = idle.c; sourceTree = "<group>"; };
@@ -352,7 +350,6 @@
 				OBJ_20 /* directory.c */,
 				OBJ_21 /* entity.c */,
 				OBJ_22 /* error.c */,
-				OBJ_23 /* example.c */,
 				OBJ_24 /* fd_util.c */,
 				OBJ_26 /* idle.c */,
 				OBJ_27 /* ierror.c */,
@@ -531,7 +528,6 @@
 				OBJ_83 /* directory.c in Sources */,
 				OBJ_84 /* entity.c in Sources */,
 				OBJ_85 /* error.c in Sources */,
-				OBJ_86 /* example.c in Sources */,
 				OBJ_87 /* fd_util.c in Sources */,
 				OBJ_88 /* fingerprint.c in Sources */,
 				C5F9176B23B57E1400AD044D /* neighbor.c in Sources */,
