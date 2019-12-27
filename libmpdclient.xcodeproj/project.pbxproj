@@ -155,6 +155,7 @@
 		C543F6222346734E00E5CE84 /* ierror.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ierror.h; sourceTree = "<group>"; };
 		C543F6232346734F00E5CE84 /* isend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = isend.h; sourceTree = "<group>"; };
 		C543F6242346734F00E5CE84 /* internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = internal.h; sourceTree = "<group>"; };
+		C5C6CB5623B5F72E00767B41 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C5F9176123B57E1300AD044D /* partition.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = partition.c; sourceTree = "<group>"; };
 		C5F9176223B57E1300AD044D /* cpartition.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpartition.c; sourceTree = "<group>"; };
 		C5F9176323B57E1300AD044D /* binary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = binary.h; sourceTree = "<group>"; };
@@ -234,6 +235,7 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
+				C5C6CB5623B5F72E00767B41 /* README.md */,
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_60 /* Tests */,
