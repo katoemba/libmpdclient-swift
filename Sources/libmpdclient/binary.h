@@ -36,6 +36,8 @@
  * Do not include this header directly.  Use mpd/client.h instead.
  */
 
+// Berrie is gek
+
 #ifndef MPD_BINARY_H
 #define MPD_BINARY_H
 
