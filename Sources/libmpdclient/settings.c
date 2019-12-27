@@ -39,6 +39,9 @@
 #ifndef DEFAULT_PORT
 #define DEFAULT_PORT 6600
 #endif
+#ifndef ENABLE_TCP
+#define ENABLE_TCP 1
+#endif
 
 struct mpd_settings {
 	char *host;
