@@ -33,7 +33,7 @@
 #include "socket.h"
 #include "binary.h"
 
-#include "include/socket.h"
+#include "mpd/socket.h"
 
 #include <assert.h>
 #include <stdbool.h>

@@ -29,7 +29,7 @@
 #ifndef MPD_IASYNC_H
 #define MPD_IASYNC_H
 
-#include "include/async.h"
+#include "mpd/async.h"
 
 struct mpd_error_info;
 

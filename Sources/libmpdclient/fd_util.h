@@ -36,7 +36,7 @@
 #ifndef FD_UTIL_H
 #define FD_UTIL_H
 
-#include "include/socket.h"
+#include "mpd/socket.h"
 
 /**
  * Wrapper for socket(), which sets the CLOEXEC and the NONBLOCK flag

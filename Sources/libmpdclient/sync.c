@@ -30,7 +30,7 @@
 #include "socket.h"
 #include "binary.h"
 
-#include "include/async.h"
+#include "mpd/async.h"
 
 #include <assert.h>
 #include <stdlib.h>

@@ -26,12 +26,12 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/queue.h"
-#include "include/send.h"
-#include "include/recv.h"
-#include "include/pair.h"
-#include "include/response.h"
-#include "include/song.h"
+#include "mpd/queue.h"
+#include "mpd/send.h"
+#include "mpd/recv.h"
+#include "mpd/pair.h"
+#include "mpd/response.h"
+#include "mpd/song.h"
 #include "internal.h"
 #include "isend.h"
 #include "run.h"

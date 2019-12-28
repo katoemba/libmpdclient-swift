@@ -26,8 +26,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/playlist.h"
-#include "include/recv.h"
+#include "mpd/playlist.h"
+#include "mpd/recv.h"
 #include "internal.h"
 
 #include <errno.h>

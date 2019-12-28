@@ -26,8 +26,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/mount.h"
-#include "include/pair.h"
+#include "mpd/mount.h"
+#include "mpd/pair.h"
 
 #include <assert.h>
 #include <string.h>

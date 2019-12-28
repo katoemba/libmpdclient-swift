@@ -26,12 +26,12 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/sticker.h"
-#include "include/connection.h"
-#include "include/send.h"
-#include "include/recv.h"
-#include "include/pair.h"
-#include "include/response.h"
+#include "mpd/sticker.h"
+#include "mpd/connection.h"
+#include "mpd/send.h"
+#include "mpd/recv.h"
+#include "mpd/pair.h"
+#include "mpd/response.h"
 #include "run.h"
 
 #include <assert.h>

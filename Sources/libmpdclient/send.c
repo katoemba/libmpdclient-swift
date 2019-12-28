@@ -26,7 +26,7 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/send.h"
+#include "mpd/send.h"
 
 #include "isend.h"
 #include "internal.h"

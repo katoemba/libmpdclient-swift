@@ -26,10 +26,10 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/neighbor.h"
-#include "include/send.h"
-#include "include/recv.h"
-#include "include/response.h"
+#include "mpd/neighbor.h"
+#include "mpd/send.h"
+#include "mpd/recv.h"
+#include "mpd/response.h"
 #include "internal.h"
 
 #include <stddef.h>

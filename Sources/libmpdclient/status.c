@@ -30,9 +30,9 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/status.h"
-#include "include/pair.h"
-#include "include/audio_format.h"
+#include "mpd/status.h"
+#include "mpd/pair.h"
+#include "mpd/audio_format.h"
 #include "iaf.h"
 
 #include <stdlib.h>

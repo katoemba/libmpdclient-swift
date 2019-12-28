@@ -26,9 +26,9 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/recv.h"
-#include "include/pair.h"
-#include "include/parser.h"
+#include "mpd/recv.h"
+#include "mpd/pair.h"
+#include "mpd/parser.h"
 #include "internal.h"
 #include "iasync.h"
 #include "binary.h"

@@ -26,8 +26,8 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/neighbor.h"
-#include "include/pair.h"
+#include "mpd/neighbor.h"
+#include "mpd/pair.h"
 
 #include <assert.h>
 #include <string.h>

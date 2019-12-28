@@ -31,7 +31,7 @@
 */
 
 #include "iaf.h"
-#include "include/audio_format.h"
+#include "mpd/audio_format.h"
 
 #include <stdlib.h>
 #include <string.h>

@@ -30,11 +30,11 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/fingerprint.h"
-#include "include/send.h"
-#include "include/recv.h"
-#include "include/pair.h"
-#include "include/response.h"
+#include "mpd/fingerprint.h"
+#include "mpd/send.h"
+#include "mpd/recv.h"
+#include "mpd/pair.h"
+#include "mpd/response.h"
 #include "run.h"
 
 #include <string.h>

@@ -27,8 +27,8 @@
 */
 
 #include "run.h"
-#include "include/response.h"
-#include "include/status.h"
+#include "mpd/response.h"
+#include "mpd/status.h"
 #include "internal.h"
 
 /**

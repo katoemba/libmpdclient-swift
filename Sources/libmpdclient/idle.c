@@ -30,12 +30,12 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/idle.h"
-#include "include/send.h"
-#include "include/connection.h"
-#include "include/pair.h"
-#include "include/recv.h"
-#include "include/response.h"
+#include "mpd/idle.h"
+#include "mpd/send.h"
+#include "mpd/connection.h"
+#include "mpd/pair.h"
+#include "mpd/recv.h"
+#include "mpd/response.h"
 #include "internal.h"
 #include "isend.h"
 #include "run.h"

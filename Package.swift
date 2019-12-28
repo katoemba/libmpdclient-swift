@@ -19,6 +19,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "libmpdclient",
+            publicHeadersPath: "mpd",
             cSettings: [
                 .define("DEFAULT_HOST", to: "\"localhost\""),
                 .define("DEFAULT_PORT", to: "6600"),

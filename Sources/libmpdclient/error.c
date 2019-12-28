@@ -26,7 +26,7 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "include/connection.h"
+#include "mpd/connection.h"
 #include "internal.h"
 
 #include <assert.h>
