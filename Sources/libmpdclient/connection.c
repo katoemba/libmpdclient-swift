@@ -48,10 +48,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifndef ENABLE_TCP
-#define ENABLE_TCP 1
-#endif
-
 #define MPD_WELCOME_MESSAGE	"OK MPD "
 
 static bool

@@ -33,13 +33,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-#ifndef DEFAULT_HOST
-#define DEFAULT_HOST "localhost"
-#endif
-#ifndef DEFAULT_PORT
-#define DEFAULT_PORT 6600
-#endif
-
 struct mpd_settings {
 	char *host;
 

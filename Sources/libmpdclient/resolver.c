@@ -34,10 +34,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifndef ENABLE_TCP
-#define ENABLE_TCP 1
-#endif
-
 #ifdef _WIN32
 #  include <winsock2.h>
 #  include <ws2tcpip.h>
