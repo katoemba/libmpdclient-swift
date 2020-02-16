@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "libmpdclient",
-    platforms: [.macOS(.v10_15), .iOS(.v10), .watchOS(.v6)],
+    platforms: [.macOS(.v10_11), .iOS(.v10), .tvOS(.v9), .watchOS(.v3)],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(name: "libmpdclient", targets: ["libmpdclient"])
