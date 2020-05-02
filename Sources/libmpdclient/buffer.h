@@ -45,7 +45,7 @@ struct mpd_buffer {
 	unsigned read;
 
 	/** the actual buffer */
-	unsigned char data[4096];
+	unsigned char data[MPD_BUFFER_SIZE];
 };
 
 /**

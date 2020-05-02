@@ -23,7 +23,8 @@ let package = Package(
             cSettings: [
                 .define("DEFAULT_HOST", to: "\"localhost\""),
                 .define("DEFAULT_PORT", to: "6600"),
-                .define("ENABLE_TCP", to: "1")
+                .define("ENABLE_TCP", to: "1"),
+                .define("MPD_BUFFER_SIZE", to: "16384"),
             ]
         )
     ]
