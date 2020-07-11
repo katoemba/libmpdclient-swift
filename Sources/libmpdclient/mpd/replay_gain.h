@@ -48,7 +48,7 @@ struct mpd_connection;
 /**
  * MPD's replay gain mode.
  *
- * @since libmpdclient 2.18, MPD 0.16.
+ * @since libmpdclient 2.19, MPD 0.16.
  */
 enum mpd_replay_gain_mode {
 	/** ignore ReplayGain tag values */
@@ -82,6 +82,15 @@ enum mpd_replay_gain_mode
 mpd_parse_replay_gain_name(const char *name);
 
 /**
+ * Looks up the name of the specified replay gain mode.
+ *
+ * @return the name, or NULL if the replay gain mode is not valid
+ */
+mpd_pure
+const char *
+mpd_lookup_replay_gain_mode(enum mpd_replay_gain_mode mode);
+
+/**
  * Queries the current state of replay gain mode on MPD.
  *
  * Sends the "replay_gain_status" command to MPD. Call mpd_recv_pair() to
@@ -91,7 +100,7 @@ mpd_parse_replay_gain_name(const char *name);
  * @param connection the connection to MPD
  * @return true on success, false on error
  *
- * @since MPD 0.16, libmpdclient 2.18.
+ * @since MPD 0.16, libmpdclient 2.19.
  */
 bool
 mpd_send_replay_gain_status(struct mpd_connection *connection);
@@ -104,7 +113,7 @@ mpd_send_replay_gain_status(struct mpd_connection *connection);
  * @return #mpd_replay_gain_mode object: #MPD_REPLAY_UNKNOWN on error (or
  * unknown ReplayGain mode); other modes on success.
  *
- * @since MPD 0.16, libmpdclient 2.18.
+ * @since MPD 0.16, libmpdclient 2.19.
  */
 enum mpd_replay_gain_mode
 mpd_run_replay_gain_status(struct mpd_connection *connection);
@@ -116,7 +125,7 @@ mpd_run_replay_gain_status(struct mpd_connection *connection);
  * @param mode the desired replay gain mode
  * @return true on success, false on error
  *
- * @since MPD 0.16, libmpdclient 2.18.
+ * @since MPD 0.16, libmpdclient 2.19.
  */
 bool
 mpd_send_replay_gain_mode(struct mpd_connection *connection,
@@ -126,10 +135,10 @@ mpd_send_replay_gain_mode(struct mpd_connection *connection,
  * Shortcut for mpd_send_replay_gain_mode() and mpd_response_finish().
  *
  * @param connection the connection to MPD
- * @mode mode the desired replay gain mode
+ * @param mode mode the desired replay gain mode
  * @return true on success, false on error
  *
- * @since MPD 0.16, libmpdclient 2.18.
+ * @since MPD 0.16, libmpdclient 2.19.
  */
 bool
 mpd_run_replay_gain_mode(struct mpd_connection *connection,

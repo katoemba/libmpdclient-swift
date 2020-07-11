@@ -56,7 +56,7 @@ mpd_parse_welcome(struct mpd_connection *connection, const char *output)
 	const char *tmp;
 	char * test;
 
-	if (strncmp(output,MPD_WELCOME_MESSAGE,strlen(MPD_WELCOME_MESSAGE))) {
+	if (strncmp(output,MPD_WELCOME_MESSAGE,strlen(MPD_WELCOME_MESSAGE)) != 0) {
 		mpd_error_code(&connection->error, MPD_ERROR_MALFORMED);
 		mpd_error_message(&connection->error,
 				  "Malformed connect message received");
@@ -142,6 +142,11 @@ mpd_connection_new(const char *host, unsigned port, unsigned timeout_ms)
 			mpd_settings_free(settings);
 			settings = mpd_settings_new(DEFAULT_HOST, DEFAULT_PORT,
 						    timeout_ms, NULL, NULL);
+			if (settings == NULL) {
+				mpd_error_code(&connection->error,
+					       MPD_ERROR_OOM);
+				return connection;
+			}
 			connection->settings = settings;
 
 			mpd_error_clear(&connection->error);
@@ -241,13 +246,13 @@ void mpd_connection_free(struct mpd_connection *connection)
 	free(connection);
 }
 
-void
+bool
 mpd_connection_set_keepalive(struct mpd_connection *connection,
 			     bool keepalive)
 {
 	assert(connection != NULL);
 
-	mpd_async_set_keepalive(connection->async, keepalive);
+	return mpd_async_set_keepalive(connection->async, keepalive);
 }
 
 const struct mpd_settings *

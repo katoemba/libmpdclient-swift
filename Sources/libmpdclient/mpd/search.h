@@ -97,7 +97,11 @@ mpd_search_add_db_songs(struct mpd_connection *connection, bool exact);
  * Send the search command with mpd_search_commit().
  *
  * @param connection the connection to MPD
+ * @param playlist_name the name of the playlist where songs shall be
+ * added
  * @return true on success, false on error
+ *
+ * @since libmpdclient 2.17.
  */
 bool
 mpd_search_add_db_songs_to_playlist(struct mpd_connection *connection,
@@ -216,7 +220,7 @@ mpd_search_add_modified_since_constraint(struct mpd_connection *connection,
  *
  * @param connection a #mpd_connection
  * @param expression the expression string; must be enclosed in
- * parantheses
+ * parentheses
  * @return true on success, false on error
  *
  * @since libmpdclient 2.15, MPD 0.21
