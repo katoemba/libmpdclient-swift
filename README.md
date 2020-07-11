@@ -30,7 +30,7 @@ import PackageDescription
 let package = Package(
   name: "MyProject",
   dependencies: [
-  .package(url: "https://github.com/katoemba/libmpdclient-swift.git", from: "0.21.17")
+  .package(url: "https://github.com/katoemba/libmpdclient-swift.git", from: "2.19")
   ],
   targets: [
     .target(name: "MyProject", dependencies: ["libmpdclient"])
