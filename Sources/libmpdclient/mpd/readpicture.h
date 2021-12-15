@@ -1,18 +1,18 @@
+
 /* libmpdclient
    (c) 2003-2019 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
-
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions
    are met:
-
    - Redistributions of source code must retain the above copyright
    notice, this list of conditions and the following disclaimer.
-
    - Redistributions in binary form must reproduce the above copyright
    notice, this list of conditions and the following disclaimer in the
    documentation and/or other materials provided with the distribution.
-
+   - Neither the name of the Music Player Daemon nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
    ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -29,15 +29,16 @@
 /*! \file
  * \brief MPD client library
  *
- * Functions for manipulating MPD's mixer controls.
- *
  * Do not include this header directly.  Use mpd/client.h instead.
  */
 
-#ifndef MPD_MIXER_H
-#define MPD_MIXER_H
+#ifndef MPD_READPICTURE_H
+#define MPD_READPICTURE_H
+
+#include "compiler.h"
 
 #include <stdbool.h>
+#include <stddef.h>
 
 struct mpd_connection;
 
@@ -46,72 +47,45 @@ extern "C" {
 #endif
 
 /**
- * Sets the volume of all output devices.
- *
- * @param connection the connection to MPD
- * @param volume the volume, an integer between 0 and 100
- * @return true on success, false on error
- */
-bool
-mpd_send_set_volume(struct mpd_connection *connection, unsigned volume);
-
-/**
- * Shortcut for mpd_send_set_volume() and mpd_response_finish().
- *
- * @param connection the connection to MPD
- * @param volume the volume, an integer between 0 and 100
- * @return true on success, false on error
- */
-bool
-mpd_run_set_volume(struct mpd_connection *connection, unsigned volume);
-
-/**
- * Changes the volume of all output devices.
- *
- * @param connection the connection to MPD
- * @param relative_volume the relative volume, an integer between -100 and 100
- * @return true on success, false on error
- *
- * @since libmpdclient 2.9
- */
-bool
-mpd_send_change_volume(struct mpd_connection *connection, int relative_volume);
-
-/**
- * Shortcut for mpd_send_change_volume() and mpd_response_finish().
- *
- * @param connection the connection to MPD
- * @param relative_volume the relative volume, an integer between -100 and 100
- * @return true on success, false on error
- *
- * @since libmpdclient 2.9
- */
-bool
-mpd_run_change_volume(struct mpd_connection *connection, int relative_volume);
-
-/**
- * Sends the "getvol" command to MPD.  Call mpd_recv_pair() to
- * read the response line.
+ * Sends the "readpicture" command to MPD.  Call mpd_recv_readpicture() to
+ * read response lines.
  *
  * @param connection a valid and connected #mpd_connection
+ * @param uri the URI of the song
+ * @param offset to read from
  * @return true on success
- *
- * @since libmpdclient 2.20, MPD 0.23
  */
 bool
-mpd_send_get_volume(struct mpd_connection *connection);
+mpd_send_readpicture(struct mpd_connection *connection, const char *uri, unsigned offset);
 
 /**
- * Shortcut for mpd_send_get_volume(), mpd_recv_pair_named() and
+ * Receives the "readpicture" response
+ *
+ * @param connection a valid and connected #mpd_connection
+ * @param buffer an already allocated buffer, should be of the same size as the binary
+ * chunk size (default 8192, can be set with binarylimit command)
+ * @param buffer_size the size of the allocated buffer
+ * @return read size on success, -1 on failure
+ */
+int
+mpd_recv_readpicture(struct mpd_connection *connection, void *buffer, size_t buffer_size);
+
+/**
+ * Shortcut for mpd_send_readpicture(), mpd_recv_readpicture() and
  * mpd_response_finish().
  *
  * @param connection a valid and connected #mpd_connection
- * @return volume on success or -1 on error
- *
- * @since libmpdclient 2.20, MPD 0.23
+ * @param uri the URI of the song
+ * @param offset to read from
+ * @param buffer an already allocated buffer, should be of the same size as the binary
+ * chunk size (default 8192, can be set with binarylimit command)
+ * @param buffer_size the size of the allocated buffer
+ * @return read size on success, -1 on failure
  */
 int
-mpd_run_get_volume(struct mpd_connection *connection);
+mpd_run_readpicture(struct mpd_connection *connection,
+                    const char *uri, unsigned offset,
+                    void *buffer, size_t buffer_size);
 
 #ifdef __cplusplus
 }

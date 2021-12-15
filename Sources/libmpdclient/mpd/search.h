@@ -38,11 +38,12 @@
  * Do not include this header directly.  Use mpd/client.h instead.
  */
 
-#ifndef MPD_DB_H
-#define MPD_DB_H
+#ifndef LIBMPDCLIENT_SEARCH_H
+#define LIBMPDCLIENT_SEARCH_H
 
 #include "connection.h"
 #include "tag.h"
+#include "position.h"
 #include "compiler.h"
 
 #include <stdbool.h>
@@ -54,12 +55,12 @@
  * constraints.
  */
 enum mpd_operator {
-	/**
-	 * The default search operator.  If "exact" was passed as
-	 * "true", then it means "full string comparison"; if false,
-	 * then it means "search for substring".
-	 */
-	MPD_OPERATOR_DEFAULT,
+    /**
+     * The default search operator.  If "exact" was passed as
+     * "true", then it means "full string comparison"; if false,
+     * then it means "search for substring".
+     */
+    MPD_OPERATOR_DEFAULT,
 };
 
 #ifdef __cplusplus
@@ -105,7 +106,7 @@ mpd_search_add_db_songs(struct mpd_connection *connection, bool exact);
  */
 bool
 mpd_search_add_db_songs_to_playlist(struct mpd_connection *connection,
-				    const char *playlist_name);
+                    const char *playlist_name);
 
 /**
  * Search for songs in the queue.
@@ -156,8 +157,8 @@ bool mpd_count_db_songs(struct mpd_connection *connection);
  */
 bool
 mpd_search_add_base_constraint(struct mpd_connection *connection,
-			       enum mpd_operator oper,
-			       const char *value);
+                   enum mpd_operator oper,
+                   const char *value);
 
 /**
  * Add a constraint on the song's URI.
@@ -169,8 +170,8 @@ mpd_search_add_base_constraint(struct mpd_connection *connection,
  */
 bool
 mpd_search_add_uri_constraint(struct mpd_connection *connection,
-			      enum mpd_operator oper,
-			      const char *value);
+                  enum mpd_operator oper,
+                  const char *value);
 
 /**
  * Add a constraint to a search limiting the value of a tag.
@@ -183,9 +184,9 @@ mpd_search_add_uri_constraint(struct mpd_connection *connection,
  */
 bool
 mpd_search_add_tag_constraint(struct mpd_connection *connection,
-			      enum mpd_operator oper,
-			      enum mpd_tag_type type,
-			      const char *value);
+                  enum mpd_operator oper,
+                  enum mpd_tag_type type,
+                  const char *value);
 
 /**
  * Add a constraint to a search, search for a value in any tag.
@@ -197,8 +198,8 @@ mpd_search_add_tag_constraint(struct mpd_connection *connection,
  */
 bool
 mpd_search_add_any_tag_constraint(struct mpd_connection *connection,
-				  enum mpd_operator oper,
-				  const char *value);
+                  enum mpd_operator oper,
+                  const char *value);
 
 /**
  * Limit the search to files modified after the given time stamp.
@@ -212,8 +213,8 @@ mpd_search_add_any_tag_constraint(struct mpd_connection *connection,
  */
 bool
 mpd_search_add_modified_since_constraint(struct mpd_connection *connection,
-					 enum mpd_operator oper,
-					 time_t value);
+                     enum mpd_operator oper,
+                     time_t value);
 
 /**
  * Add an expression string.
@@ -227,7 +228,7 @@ mpd_search_add_modified_since_constraint(struct mpd_connection *connection,
  */
 bool
 mpd_search_add_expression(struct mpd_connection *connection,
-			  const char *expression);
+              const char *expression);
 
 /**
  * Group the results by the specified tag.
@@ -240,7 +241,7 @@ mpd_search_add_expression(struct mpd_connection *connection,
  */
 bool
 mpd_search_add_group_tag(struct mpd_connection *connection,
-			 enum mpd_tag_type type);
+             enum mpd_tag_type type);
 
 /**
  * Sort the results by the specified named attribute.
@@ -255,7 +256,7 @@ mpd_search_add_group_tag(struct mpd_connection *connection,
  */
 bool
 mpd_search_add_sort_name(struct mpd_connection *connection,
-			 const char *name, bool descending);
+             const char *name, bool descending);
 
 /**
  * Sort the results by the specified tag.
@@ -270,7 +271,7 @@ mpd_search_add_sort_name(struct mpd_connection *connection,
  */
 bool
 mpd_search_add_sort_tag(struct mpd_connection *connection,
-			enum mpd_tag_type type, bool descending);
+            enum mpd_tag_type type, bool descending);
 
 /**
  * Request only a portion of the result set.
@@ -284,7 +285,20 @@ mpd_search_add_sort_tag(struct mpd_connection *connection,
  */
 bool
 mpd_search_add_window(struct mpd_connection *connection,
-		      unsigned start, unsigned end);
+              unsigned start, unsigned end);
+
+/**
+ * Adds the search to the specified position in the queue.
+ *
+ * @param connection a #mpd_connection
+ * @param position the position in the queue
+ * @param whence how to interpret the position parameter
+ *
+ * @since libmpdclient 2.20
+ */
+bool
+mpd_search_add_position(struct mpd_connection *connection,
+            unsigned position, enum mpd_position_whence whence);
 
 /**
  * Starts the real search with constraints added with

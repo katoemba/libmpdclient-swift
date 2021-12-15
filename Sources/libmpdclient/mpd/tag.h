@@ -36,52 +36,62 @@
 /**
  * @since libmpdclient 2.10 added support for #MPD_TAG_MUSICBRAINZ_RELEASETRACKID.
  * @since libmpdclient 2.11 added support for #MPD_TAG_ARTIST_SORT and #MPD_TAG_ALBUM_ARTIST_SORT
- * @since libmpdclient 2.17 added support for #MPD_TAG_LABEL and #MPD_TAG_MUSICBRAINZ_WORKID.
+ * @since libmpdclient 2.17 added support for #MPD_TAG_LABEL,
+ *                                            #MPD_TAG_MUSICBRAINZ_WORKID,
+ *                                            #MPD_TAG_GROUPING,
+ *                                            #MPD_TAG_WORK,
+ *                                            #MPD_TAG_CONDUCTOR.
  */
 enum mpd_tag_type
 {
-	/**
-	 * Special value returned by mpd_tag_name_parse() when an
-	 * unknown name was passed.
-	 */
-	MPD_TAG_UNKNOWN = -1,
+    /**
+     * Special value returned by mpd_tag_name_parse() when an
+     * unknown name was passed.
+     */
+    MPD_TAG_UNKNOWN = -1,
 
-	MPD_TAG_ARTIST,
-	MPD_TAG_ALBUM,
-	MPD_TAG_ALBUM_ARTIST,
-	MPD_TAG_TITLE,
-	MPD_TAG_TRACK,
-	MPD_TAG_NAME,
-	MPD_TAG_GENRE,
-	MPD_TAG_DATE,
-	MPD_TAG_COMPOSER,
-	MPD_TAG_PERFORMER,
-	MPD_TAG_COMMENT,
-	MPD_TAG_DISC,
+    MPD_TAG_ARTIST,
+    MPD_TAG_ALBUM,
+    MPD_TAG_ALBUM_ARTIST,
+    MPD_TAG_TITLE,
+    MPD_TAG_TRACK,
+    MPD_TAG_NAME,
+    MPD_TAG_GENRE,
+    MPD_TAG_DATE,
+    MPD_TAG_COMPOSER,
+    MPD_TAG_PERFORMER,
+    MPD_TAG_COMMENT,
+    MPD_TAG_DISC,
 
-	MPD_TAG_MUSICBRAINZ_ARTISTID,
-	MPD_TAG_MUSICBRAINZ_ALBUMID,
-	MPD_TAG_MUSICBRAINZ_ALBUMARTISTID,
-	MPD_TAG_MUSICBRAINZ_TRACKID,
-	MPD_TAG_MUSICBRAINZ_RELEASETRACKID,
+    MPD_TAG_MUSICBRAINZ_ARTISTID,
+    MPD_TAG_MUSICBRAINZ_ALBUMID,
+    MPD_TAG_MUSICBRAINZ_ALBUMARTISTID,
+    MPD_TAG_MUSICBRAINZ_TRACKID,
+    MPD_TAG_MUSICBRAINZ_RELEASETRACKID,
 
-	MPD_TAG_ORIGINAL_DATE,
+    MPD_TAG_ORIGINAL_DATE,
 
-	MPD_TAG_ARTIST_SORT,
-	MPD_TAG_ALBUM_ARTIST_SORT,
+    MPD_TAG_ARTIST_SORT,
+    MPD_TAG_ALBUM_ARTIST_SORT,
 
-	MPD_TAG_ALBUM_SORT,
-	MPD_TAG_LABEL,
-	MPD_TAG_MUSICBRAINZ_WORKID,
+    MPD_TAG_ALBUM_SORT,
+    MPD_TAG_LABEL,
+    MPD_TAG_MUSICBRAINZ_WORKID,
 
-	MPD_TAG_GROUPING,
-	MPD_TAG_WORK,
-	MPD_TAG_CONDUCTOR,
+    MPD_TAG_GROUPING,
+    MPD_TAG_WORK,
+    MPD_TAG_CONDUCTOR,
 
-	/* IMPORTANT: the ordering of tag types above must be
-	   retained, or else the libmpdclient ABI breaks */
+    MPD_TAG_COMPOSER_SORT,
+    MPD_TAG_ENSEMBLE,
+    MPD_TAG_MOVEMENT,
+    MPD_TAG_MOVEMENTNUMBER,
+    MPD_TAG_LOCATION,
 
-	MPD_TAG_COUNT
+    /* IMPORTANT: the ordering of tag types above must be
+       retained, or else the libmpdclient ABI breaks */
+
+    MPD_TAG_COUNT
 };
 
 #ifdef __cplusplus

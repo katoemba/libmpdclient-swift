@@ -27,6 +27,7 @@
 */
 
 #include "mpd/playlist.h"
+#include "mpd/position.h"
 #include "mpd/send.h"
 #include "mpd/response.h"
 #include "isend.h"
@@ -37,73 +38,89 @@
 
 /* (bits+1)/3 (plus the sign character) */
 enum {
-	UNSIGNEDLEN = (sizeof(unsigned) * CHAR_BIT + 1) / 3 + 1,
+    UNSIGNEDLEN = (sizeof(unsigned) * CHAR_BIT + 1) / 3 + 1,
 };
 
 bool
 mpd_send_list_playlists(struct mpd_connection *connection)
 {
-	return mpd_send_command(connection, "listplaylists", NULL);
+    return mpd_send_command(connection, "listplaylists", NULL);
 }
 
 bool
 mpd_send_list_playlist(struct mpd_connection *connection, const char *name)
 {
-	return mpd_send_command(connection, "listplaylist", name, NULL);
+    return mpd_send_command(connection, "listplaylist", name, NULL);
 }
 
 bool
 mpd_send_list_playlist_meta(struct mpd_connection *connection, const char *name)
 {
-	return mpd_send_command(connection, "listplaylistinfo", name, NULL);
+    return mpd_send_command(connection, "listplaylistinfo", name, NULL);
 }
 
 bool
 mpd_send_playlist_clear(struct mpd_connection *connection, const char *name)
 {
-	return mpd_send_command(connection, "playlistclear", name, NULL);
+    return mpd_send_command(connection, "playlistclear", name, NULL);
 }
 
 bool
 mpd_run_playlist_clear(struct mpd_connection *connection, const char *name)
 {
-	return mpd_run_check(connection) &&
-		mpd_send_playlist_clear(connection, name) &&
-		mpd_response_finish(connection);
+    return mpd_run_check(connection) &&
+        mpd_send_playlist_clear(connection, name) &&
+        mpd_response_finish(connection);
 }
 
 bool
 mpd_send_playlist_add(struct mpd_connection *connection, const char *name,
-		      const char *path)
+              const char *path)
 {
-	return mpd_send_command(connection, "playlistadd", name, path, NULL);
+    return mpd_send_command(connection, "playlistadd", name, path, NULL);
 }
 
 bool
 mpd_run_playlist_add(struct mpd_connection *connection,
-		     const char *name, const char *path)
+             const char *name, const char *path)
 {
-	return mpd_run_check(connection) &&
-		mpd_send_playlist_add(connection, name, path) &&
-		mpd_response_finish(connection);
+    return mpd_run_check(connection) &&
+        mpd_send_playlist_add(connection, name, path) &&
+        mpd_response_finish(connection);
+}
+
+bool
+mpd_send_playlist_add_to(struct mpd_connection *connection, const char *name,
+              const char *path, unsigned to)
+{
+    return mpd_send_s_s_u_command(connection, "playlistadd", name, path, to);
+}
+
+bool
+mpd_run_playlist_add_to(struct mpd_connection *connection,
+             const char *name, const char *path, unsigned to)
+{
+    return mpd_run_check(connection) &&
+        mpd_send_playlist_add_to(connection, name, path, to) &&
+        mpd_response_finish(connection);
 }
 
 bool
 mpd_send_playlist_move(struct mpd_connection *connection, const char *name,
-		       unsigned from, unsigned to)
+               unsigned from, unsigned to)
 {
-	char from_string[UNSIGNEDLEN], to_string[UNSIGNEDLEN];
+    char from_string[UNSIGNEDLEN], to_string[UNSIGNEDLEN];
 
-	snprintf(from_string, sizeof(from_string), "%u", from);
-	snprintf(to_string, sizeof(to_string), "%u", to);
+    snprintf(from_string, sizeof(from_string), "%u", from);
+    snprintf(to_string, sizeof(to_string), "%u", to);
 
-	return mpd_send_command(connection, "playlistmove", name,
-				from_string, to_string, NULL);
+    return mpd_send_command(connection, "playlistmove", name,
+                from_string, to_string, NULL);
 }
 
 bool
 mpd_run_playlist_move(struct mpd_connection *connection, const char *name,
-                      unsigned from, unsigned to)
+               unsigned from, unsigned to)
 {
     return mpd_run_check(connection) &&
         mpd_send_playlist_move(connection, name, from, to) &&
@@ -112,95 +129,133 @@ mpd_run_playlist_move(struct mpd_connection *connection, const char *name,
 
 bool
 mpd_send_playlist_delete(struct mpd_connection *connection, const char *name,
-			 unsigned pos)
+             unsigned pos)
 {
-	char pos_string[UNSIGNEDLEN];
+    char pos_string[UNSIGNEDLEN];
 
-	snprintf(pos_string, sizeof(pos_string), "%u", pos);
+    snprintf(pos_string, sizeof(pos_string), "%u", pos);
 
-	return mpd_send_command(connection, "playlistdelete", name, pos_string, NULL);
+    return mpd_send_command(connection, "playlistdelete", name, pos_string, NULL);
 }
 
 bool
 mpd_run_playlist_delete(struct mpd_connection *connection,
-			const char *name, unsigned pos)
+            const char *name, unsigned pos)
 {
-	return mpd_run_check(connection) &&
-		mpd_send_playlist_delete(connection, name, pos) &&
-		mpd_response_finish(connection);
+    return mpd_run_check(connection) &&
+        mpd_send_playlist_delete(connection, name, pos) &&
+        mpd_response_finish(connection);
+}
+
+bool
+mpd_send_playlist_delete_range(struct mpd_connection *connection, const char *name,
+             unsigned start, unsigned end)
+{
+    return mpd_send_s_range_command(connection, "playlistdelete", name,
+                    start, end);
+}
+
+bool
+mpd_run_playlist_delete_range(struct mpd_connection *connection,
+            const char *name, unsigned start, unsigned end)
+{
+    return mpd_run_check(connection) &&
+        mpd_send_playlist_delete_range(connection, name, start, end) &&
+        mpd_response_finish(connection);
 }
 
 bool
 mpd_send_save(struct mpd_connection *connection, const char *name)
 {
-	return mpd_send_command(connection, "save", name, NULL);
+    return mpd_send_command(connection, "save", name, NULL);
 }
 
 bool
 mpd_run_save(struct mpd_connection *connection, const char *name)
 {
-	return mpd_run_check(connection) &&
-		mpd_send_save(connection, name) &&
-		mpd_response_finish(connection);
+    return mpd_run_check(connection) &&
+        mpd_send_save(connection, name) &&
+        mpd_response_finish(connection);
 }
 
 bool
 mpd_send_load(struct mpd_connection *connection, const char *name)
 {
-	return mpd_send_command(connection, "load", name, NULL);
+    return mpd_send_command(connection, "load", name, NULL);
 }
 
 bool
 mpd_run_load(struct mpd_connection *connection, const char *name)
 {
-	return mpd_run_check(connection) &&
-		mpd_send_load(connection, name) &&
-		mpd_response_finish(connection);
+    return mpd_run_check(connection) &&
+        mpd_send_load(connection, name) &&
+        mpd_response_finish(connection);
 }
 
 bool
 mpd_send_load_range(struct mpd_connection *connection, const char *name,
-		    unsigned start, unsigned end)
+            unsigned start, unsigned end)
 {
-	return mpd_send_s_range_command(connection, "load", name,
-					start, end);
+    return mpd_send_s_range_command(connection, "load", name,
+                    start, end);
 }
 
 bool
 mpd_run_load_range(struct mpd_connection *connection, const char *name,
-		   unsigned start, unsigned end)
+           unsigned start, unsigned end)
 {
-	return mpd_run_check(connection) &&
-		mpd_send_load_range(connection, name, start, end) &&
-		mpd_response_finish(connection);
+    return mpd_run_check(connection) &&
+        mpd_send_load_range(connection, name, start, end) &&
+        mpd_response_finish(connection);
+}
+
+bool
+mpd_send_load_range_to(struct mpd_connection *connection, const char *name,
+            unsigned start, unsigned end, unsigned to, enum mpd_position_whence whence)
+{
+    const char *whence_s = mpd_position_whence_char(whence);
+    char to_str[64] = "";
+    snprintf(to_str, 64, "%s%u", whence_s, to);
+
+    return mpd_send_s_range_to_command(connection, "load", name,
+                    start, end, to_str);
+}
+
+bool
+mpd_run_load_range_to(struct mpd_connection *connection, const char *name,
+           unsigned start, unsigned end, unsigned to, enum mpd_position_whence whence)
+{
+    return mpd_run_check(connection) &&
+        mpd_send_load_range_to(connection, name, start, end, to, whence) &&
+        mpd_response_finish(connection);
 }
 
 bool
 mpd_send_rename(struct mpd_connection *connection,
-		const char *from, const char *to)
+        const char *from, const char *to)
 {
-	return mpd_send_command(connection, "rename", from, to, NULL);
+    return mpd_send_command(connection, "rename", from, to, NULL);
 }
 
 bool
 mpd_run_rename(struct mpd_connection *connection,
-	       const char *from, const char *to)
+           const char *from, const char *to)
 {
-	return mpd_run_check(connection) &&
-		mpd_send_rename(connection, from, to) &&
-		mpd_response_finish(connection);
+    return mpd_run_check(connection) &&
+        mpd_send_rename(connection, from, to) &&
+        mpd_response_finish(connection);
 }
 
 bool
 mpd_send_rm(struct mpd_connection *connection, const char *name)
 {
-	return mpd_send_command(connection, "rm", name, NULL);
+    return mpd_send_command(connection, "rm", name, NULL);
 }
 
 bool
 mpd_run_rm(struct mpd_connection *connection, const char *name)
 {
-	return mpd_run_check(connection) &&
-		mpd_send_rm(connection, name) &&
-		mpd_response_finish(connection);
+    return mpd_run_check(connection) &&
+        mpd_send_rm(connection, name) &&
+        mpd_response_finish(connection);
 }

@@ -1,17 +1,22 @@
 /* libmpdclient
    (c) 2003-2021 The Music Player Daemon Project
    This project's homepage is: http://www.musicpd.org
+
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions
    are met:
+
    - Redistributions of source code must retain the above copyright
    notice, this list of conditions and the following disclaimer.
+
    - Redistributions in binary form must reproduce the above copyright
    notice, this list of conditions and the following disclaimer in the
    documentation and/or other materials provided with the distribution.
+
    - Neither the name of the Music Player Daemon nor the names of its
    contributors may be used to endorse or promote products derived from
    this software without specific prior written permission.
+
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
    ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -25,60 +30,49 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "mpd/send.h"
-#include "mpd/recv.h"
-#include "mpd/pair.h"
-#include "mpd/response.h"
-#include "mpd/connection.h"
-#include "mpd/readpicture.h"
-#include "run.h"
-#include "internal.h"
-#include "sync.h"
-#include "isend.h"
+/*! \file
+ * \brief MPD client library
+ *
+ * Do not include this header directly.  Use mpd/client.h instead.
+ */
 
-#include <string.h>
-#include <stdlib.h>
-#include <inttypes.h>
+#ifndef MPD_BINARY_H
+#define MPD_BINARY_H
 
+#include <stdbool.h>
+
+struct mpd_connection;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/**
+ * Sends the "binarylimit" command to MPD.
+ *
+ * @param connection a valid and connected mpd_connection.
+ * @param limit the binary chunk size limit.
+ * @return true on success
+ *
+ * @since libmpdclient 2.20, MPD 0.22.4
+ */
 bool
-mpd_send_readpicture(struct mpd_connection *connection, const char *uri, unsigned offset)
-{
-    return mpd_send_s_u_command(connection, "readpicture", uri, offset);
+mpd_send_binarylimit(struct mpd_connection *connection, unsigned limit);
+
+/**
+ * Shortcut for mpd_send_binarylimit() and mpd_response_finish().
+ *
+ * @param connection A valid and connected mpd_connection.
+ * @param limit the binary chunk size limit.
+ * @return true on success
+ *
+ * @since libmpdclient 2.20, MPD 0.22.4
+ */
+bool
+mpd_run_binarylimit(struct mpd_connection *connection, unsigned limit);
+
+#ifdef __cplusplus
 }
+#endif
 
-int
-mpd_recv_readpicture(struct mpd_connection *connection, void *buffer, size_t buffer_size)
-{
-    struct mpd_pair *pair = mpd_recv_pair_named(connection, "binary");
-    if (pair == NULL) {
-        return -1;
-    }
-
-    size_t chunk_size = strtoumax(pair->value, NULL, 10);
-    mpd_return_pair(connection, pair);
-
-    unsigned retrieve_bytes = chunk_size > buffer_size ? buffer_size : chunk_size;
-    if (mpd_recv_binary(connection, buffer, retrieve_bytes) == false) {
-        return -1;
-    }
-
-    return retrieve_bytes;
-}
-
-int
-mpd_run_readpicture(struct mpd_connection *connection,
-                    const char *uri, unsigned offset,
-                    void *buffer, size_t buffer_size)
-{
-    if (!mpd_run_check(connection) ||
-        !mpd_send_readpicture(connection, uri, offset)) {
-            return -1;
-    }
-
-    int read_size = mpd_recv_readpicture(connection, buffer, buffer_size);
-    if (!mpd_response_finish(connection)) {
-        return -1;
-    }
-
-    return read_size;
-}
+#endif

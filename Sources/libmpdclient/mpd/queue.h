@@ -38,6 +38,7 @@
 #define MPD_QUEUE_H
 
 #include "compiler.h"
+#include "position.h"
 #include "tag.h"
 
 #include <stdbool.h>
@@ -78,7 +79,7 @@ mpd_send_list_queue_meta(struct mpd_connection *connection);
  */
 bool
 mpd_send_list_queue_range_meta(struct mpd_connection *connection,
-			       unsigned start, unsigned end);
+                   unsigned start, unsigned end);
 
 /**
  * Requests information (including tags) about one song in the
@@ -137,7 +138,7 @@ mpd_run_get_queue_song_id(struct mpd_connection *connection, unsigned id);
  */
 bool
 mpd_send_queue_changes_meta(struct mpd_connection *connection,
-			    unsigned version);
+                unsigned version);
 
 /**
  * Same as mpd_send_queue_changes_meta(), but limit the result to a
@@ -157,8 +158,8 @@ mpd_send_queue_changes_meta(struct mpd_connection *connection,
  */
 bool
 mpd_send_queue_changes_meta_range(struct mpd_connection *connection,
-				  unsigned version,
-				  unsigned start, unsigned end);
+                  unsigned version,
+                  unsigned start, unsigned end);
 
 /**
  * A more bandwidth efficient version of the
@@ -173,7 +174,7 @@ mpd_send_queue_changes_meta_range(struct mpd_connection *connection,
  */
 bool
 mpd_send_queue_changes_brief(struct mpd_connection *connection,
-			     unsigned version);
+                 unsigned version);
 
 /**
  * Same as mpd_send_queue_changes_brief(), but limit the result to a
@@ -192,8 +193,8 @@ mpd_send_queue_changes_brief(struct mpd_connection *connection,
  */
 bool
 mpd_send_queue_changes_brief_range(struct mpd_connection *connection,
-				   unsigned version,
-				   unsigned start, unsigned end);
+                   unsigned version,
+                   unsigned start, unsigned end);
 
 /**
  * Receives a response element of mpd_send_queue_changes_brief() or
@@ -207,17 +208,17 @@ mpd_send_queue_changes_brief_range(struct mpd_connection *connection,
  */
 bool
 mpd_recv_queue_change_brief(struct mpd_connection *connection,
-			    unsigned *position_r, unsigned *id_r);
+                unsigned *position_r, unsigned *id_r);
 
 /**
  * Appends a song to the playlist: either a single file or a directory.
  *
  * @param connection A valid and connected mpd_connection.
- * @param file URI of a song or directory (added recursively)
+ * @param uri URI of a song or directory (added recursively)
  * @return true on success, false on error
  */
 bool
-mpd_send_add(struct mpd_connection *connection, const char *file);
+mpd_send_add(struct mpd_connection *connection, const char *uri);
 
 /**
  * Shortcut for mpd_send_add() and mpd_response_finish().
@@ -230,15 +231,45 @@ bool
 mpd_run_add(struct mpd_connection *connection, const char *uri);
 
 /**
+ * Inserts a song into the playlist for a given position: either a single file or a directory.
+ *
+ * @param connection A valid and connected mpd_connection.
+ * @param uri URI of a song or directory (added recursively)
+ * @param to the desired position of the song
+ * @param whence how to interpret the position parameter
+ * @return true on success, false on error
+ *
+ * @since libmpdclient 2.20
+ */
+bool
+mpd_send_add_whence(struct mpd_connection *connection, const char *uri,
+            unsigned to, enum mpd_position_whence whence);
+
+/**
+ * Shortcut for mpd_send_add_whence() and mpd_response_finish().
+ *
+ * @param connection the connection to MPD
+ * @param uri URI of a song or directory (added recursively)
+ * @param to the desired position of the song
+ * @param whence how to interpret the position parameter
+ * @return true on success, false on error
+ *
+ * @since libmpdclient 2.20
+ */
+bool
+mpd_run_add_whence(struct mpd_connection *connection, const char *uri,
+            unsigned to, enum mpd_position_whence whence);
+
+/**
  * Appends a song to the playlist. Call mpd_recv_song_id() for its id.
  * file is always a single file or URL.
  *
  * @param connection the connection to MPD
- * @param file URI of the song to be added
+ * @param uri URI of the song to be added
  * @return true on success, false on error
  */
 bool
-mpd_send_add_id(struct mpd_connection *connection, const char *file);
+mpd_send_add_id(struct mpd_connection *connection, const char *uri);
 
 /**
  * Inserts a song into the playlist for a given position, and returns its id.
@@ -251,7 +282,23 @@ mpd_send_add_id(struct mpd_connection *connection, const char *file);
  */
 bool
 mpd_send_add_id_to(struct mpd_connection *connection, const char *uri,
-		   unsigned to);
+           unsigned to);
+
+/**
+ * Inserts a song into the playlist for a given position, and returns its id.
+ * file is always a single file or URL.
+ *
+ * @param connection the connection to MPD
+ * @param uri the URI of the song to be added
+ * @param to the desired position of the song
+ * @param whence how to interpret the position parameter
+ * @return true on success, false on error
+ *
+ * @since libmpdclient 2.20
+ */
+bool
+mpd_send_add_id_whence(struct mpd_connection *connection, const char *uri,
+           unsigned to, enum mpd_position_whence whence);
 
 /**
  * Returns the id of the new song in the playlist.  To be called after
@@ -268,11 +315,11 @@ mpd_recv_song_id(struct mpd_connection *connection);
  * file is always a single file or URL.
  *
  * @param connection the connection to MPD
- * @param file URI of a song to be added
+ * @param uri URI of a song to be added
  * @return the new song id, -1 on error or if MPD did not send an id
  */
 int
-mpd_run_add_id(struct mpd_connection *connection, const char *file);
+mpd_run_add_id(struct mpd_connection *connection, const char *uri);
 
 /**
  * Executes the "addid" command and reads the response.
@@ -285,7 +332,23 @@ mpd_run_add_id(struct mpd_connection *connection, const char *file);
  */
 int
 mpd_run_add_id_to(struct mpd_connection *connection, const char *uri,
-		  unsigned to);
+          unsigned to);
+
+/**
+ * Executes the "addid" command and reads the response.
+ * file is always a single file or URL.
+ *
+ * @param connection the connection to MPD
+ * @param uri the URI of the song to be added
+ * @param to the desired position of the song
+ * @param whence how to interpret the position parameter
+ * @return the new song id, -1 on error or if MPD did not send an id
+ *
+ * @since libmpdclient 2.20
+ */
+int
+mpd_run_add_id_whence(struct mpd_connection *connection, const char *uri,
+          unsigned to, enum mpd_position_whence whence);
 
 /**
  * Deletes a song from the queue.
@@ -320,7 +383,7 @@ mpd_run_delete(struct mpd_connection *connection, unsigned pos);
  */
 bool
 mpd_send_delete_range(struct mpd_connection *connection,
-		      unsigned start, unsigned end);
+              unsigned start, unsigned end);
 
 /**
  * Shortcut for mpd_send_delete_range() and mpd_response_finish().
@@ -335,7 +398,7 @@ mpd_send_delete_range(struct mpd_connection *connection,
  */
 bool
 mpd_run_delete_range(struct mpd_connection *connection,
-		      unsigned start, unsigned end);
+              unsigned start, unsigned end);
 
 /**
  * Deletes a song from the queue.
@@ -388,7 +451,7 @@ mpd_run_shuffle(struct mpd_connection *connection);
  */
 bool
 mpd_send_shuffle_range(struct mpd_connection *connection,
-		       unsigned start, unsigned end);
+               unsigned start, unsigned end);
 
 /**
  * Shortcut for mpd_send_shuffle_range() and mpd_response_finish().
@@ -403,7 +466,7 @@ mpd_send_shuffle_range(struct mpd_connection *connection,
  */
 bool
 mpd_run_shuffle_range(struct mpd_connection *connection,
-		      unsigned start, unsigned end);
+              unsigned start, unsigned end);
 
 /**
  * Clear the queue.
@@ -481,7 +544,7 @@ mpd_run_move_id(struct mpd_connection *connection, unsigned from, unsigned to);
  */
 bool
 mpd_send_move_range(struct mpd_connection *connection,
-		    unsigned start, unsigned end, unsigned to);
+            unsigned start, unsigned end, unsigned to);
 
 /**
  * Shortcut for mpd_send_move_range() and mpd_response_finish().
@@ -497,7 +560,7 @@ mpd_send_move_range(struct mpd_connection *connection,
  */
 bool
 mpd_run_move_range(struct mpd_connection *connection,
-		    unsigned start, unsigned end, unsigned to);
+            unsigned start, unsigned end, unsigned to);
 
 /**
  * Swap the position of two songs in the queue.
@@ -556,7 +619,7 @@ mpd_run_swap_id(struct mpd_connection *connection, unsigned id1, unsigned id2);
  */
 bool
 mpd_send_add_tag_id(struct mpd_connection *connection, unsigned id,
-		    enum mpd_tag_type tag, const char *value);
+            enum mpd_tag_type tag, const char *value);
 
 /**
  * Shortcut for mpd_send_add_tag_id() and mpd_response_finish().
@@ -571,7 +634,7 @@ mpd_send_add_tag_id(struct mpd_connection *connection, unsigned id,
  */
 bool
 mpd_run_add_tag_id(struct mpd_connection *connection, unsigned id,
-		   enum mpd_tag_type tag, const char *value);
+           enum mpd_tag_type tag, const char *value);
 
 /**
  * Remove a tag from the specified song (command "cleartagid").
@@ -585,7 +648,7 @@ mpd_run_add_tag_id(struct mpd_connection *connection, unsigned id,
  */
 bool
 mpd_send_clear_tag_id(struct mpd_connection *connection, unsigned id,
-		      enum mpd_tag_type tag);
+              enum mpd_tag_type tag);
 
 /**
  * Shortcut for mpd_send_clear_tag_id() and mpd_response_finish().
@@ -599,7 +662,7 @@ mpd_send_clear_tag_id(struct mpd_connection *connection, unsigned id,
  */
 bool
 mpd_run_clear_tag_id(struct mpd_connection *connection, unsigned id,
-		     enum mpd_tag_type tag);
+             enum mpd_tag_type tag);
 
 /**
  * Remove all tags from the specified song (command "cleartagid").
@@ -636,8 +699,8 @@ mpd_run_clear_all_tags_id(struct mpd_connection *connection, unsigned id);
  * @since libmpdclient 2.6
  */
 bool
-mpd_send_prio(struct mpd_connection *connection, int priority,
-	      unsigned position);
+mpd_send_prio(struct mpd_connection *connection, unsigned priority,
+          unsigned position);
 
 /**
  * Shortcut for mpd_send_prio() and mpd_response_finish().
@@ -650,8 +713,8 @@ mpd_send_prio(struct mpd_connection *connection, int priority,
  * @since libmpdclient 2.6
  */
 bool
-mpd_run_prio(struct mpd_connection *connection, int priority,
-	     unsigned position);
+mpd_run_prio(struct mpd_connection *connection, unsigned priority,
+         unsigned position);
 
 /**
  * Change the priority of a song range.
@@ -667,8 +730,8 @@ mpd_run_prio(struct mpd_connection *connection, int priority,
  * @since libmpdclient 2.8 added support for "UINT_MAX"
  */
 bool
-mpd_send_prio_range(struct mpd_connection *connection, int priority,
-		    unsigned start, unsigned end);
+mpd_send_prio_range(struct mpd_connection *connection, unsigned priority,
+            unsigned start, unsigned end);
 
 /**
  * Shortcut for mpd_send_prio_range() and mpd_response_finish().
@@ -684,8 +747,8 @@ mpd_send_prio_range(struct mpd_connection *connection, int priority,
  * @since libmpdclient 2.8 added support for "UINT_MAX"
  */
 bool
-mpd_run_prio_range(struct mpd_connection *connection, int priority,
-		   unsigned start, unsigned end);
+mpd_run_prio_range(struct mpd_connection *connection, unsigned priority,
+           unsigned start, unsigned end);
 
 /**
  * Change the priority of the specified song.
@@ -698,8 +761,8 @@ mpd_run_prio_range(struct mpd_connection *connection, int priority,
  * @since libmpdclient 2.6
  */
 bool
-mpd_send_prio_id(struct mpd_connection *connection, int priority,
-		 unsigned id);
+mpd_send_prio_id(struct mpd_connection *connection, unsigned priority,
+         unsigned id);
 
 /**
  * Shortcut for mpd_send_prio_id() and mpd_response_finish().
@@ -712,8 +775,8 @@ mpd_send_prio_id(struct mpd_connection *connection, int priority,
  * @since libmpdclient 2.6
  */
 bool
-mpd_run_prio_id(struct mpd_connection *connection, int priority,
-		unsigned id);
+mpd_run_prio_id(struct mpd_connection *connection, unsigned priority,
+        unsigned id);
 
 /**
  * Specify the portion of a song that shall be played.
@@ -733,7 +796,7 @@ mpd_run_prio_id(struct mpd_connection *connection, int priority,
  */
 bool
 mpd_send_range_id(struct mpd_connection *connection, unsigned id,
-		  float start, float end);
+          float start, float end);
 
 /**
  *
@@ -750,7 +813,7 @@ mpd_send_range_id(struct mpd_connection *connection, unsigned id,
  */
 bool
 mpd_run_range_id(struct mpd_connection *connection, unsigned id,
-		 float start, float end);
+         float start, float end);
 #ifdef __cplusplus
 }
 #endif
