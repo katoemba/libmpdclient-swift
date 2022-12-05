@@ -25,7 +25,7 @@ let package = Package(
                 .define("DEFAULT_PORT", to: "6600"),
                 .define("ENABLE_TCP", to: "1"),
                 .define("MPD_BUFFER_SIZE", to: "16384"),
-                .unsafeFlags(["-DNDEBUG"], .when(platforms: [.iOS, .macOS, .tvOS, .watchOS], configuration: .release)),
+                .define("NDEBUG", .when(platforms: [.iOS], configuration: .release)),
             ]
         )
     ]
