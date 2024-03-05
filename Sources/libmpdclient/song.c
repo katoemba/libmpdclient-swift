@@ -112,6 +112,8 @@ struct mpd_song {
 	 * The audio format as reported by MPD's decoder plugin.
 	 */
 	struct mpd_audio_format audio_format;
+    
+    char *raw_audio_format;
 };
 
 static struct mpd_song *
@@ -146,6 +148,7 @@ mpd_song_new(const char *uri)
 	song->prio = 0;
 
 	memset(&song->audio_format, 0, sizeof(song->audio_format));
+    song->raw_audio_format = NULL;
 
 #ifndef NDEBUG
 	song->finished = false;
@@ -178,6 +181,8 @@ void mpd_song_free(struct mpd_song *song) {
 			tag = next;
 		}
 	}
+    
+    free(song->raw_audio_format);
 
 	free(song);
 }
@@ -425,6 +430,12 @@ mpd_song_get_audio_format(const struct mpd_song *song)
 		: NULL;
 }
 
+const char*
+mpd_song_get_raw_audio_format(const struct mpd_song *song)
+{
+    return song->raw_audio_format;
+}
+
 struct mpd_song *
 mpd_song_begin(const struct mpd_pair *pair)
 {
@@ -522,8 +533,11 @@ mpd_song_feed(struct mpd_song *song, const struct mpd_pair *pair)
 		mpd_song_set_id(song, atoi(pair->value));
 	else if (strcmp(pair->name, "Prio") == 0)
 		mpd_song_set_prio(song, atoi(pair->value));
-	else if (strcmp(pair->name, "Format") == 0)
-		mpd_song_parse_audio_format(song, pair->value);
+    else if (strcmp(pair->name, "Format") == 0) {
+        mpd_song_parse_audio_format(song, pair->value);
+        free(song->raw_audio_format);
+        song->raw_audio_format = strdup(pair->value);
+    }
 
 	return true;
 }

@@ -116,6 +116,9 @@ struct mpd_status {
 	/** the current audio format */
 	struct mpd_audio_format audio_format;
 
+    /** the current audio format */
+    char * raw_audio_format;
+
 	/** non-zero if MPD is updating, 0 otherwise */
 	unsigned update_id;
 
@@ -150,6 +153,7 @@ mpd_status_begin(void)
 	status->total_time = 0;
 	status->kbit_rate = 0;
 	memset(&status->audio_format, 0, sizeof(status->audio_format));
+    status->raw_audio_format = NULL;
 	status->crossfade = 0;
 	status->mixrampdb = 100.0;
 	status->mixrampdelay = -1.0;
@@ -275,8 +279,11 @@ mpd_status_feed(struct mpd_status *status, const struct mpd_pair *pair)
 		status->mixrampdelay = atof(pair->value);
 	else if (strcmp(pair->name, "updating_db") == 0)
 		status->update_id = atoi(pair->value);
-	else if (strcmp(pair->name, "audio") == 0)
-		mpd_parse_audio_format(&status->audio_format, pair->value);
+    else if (strcmp(pair->name, "audio") == 0) {
+        mpd_parse_audio_format(&status->audio_format, pair->value);
+        free(status->raw_audio_format);
+        status->raw_audio_format = strdup(pair->value);
+    }
 }
 
 void mpd_status_free(struct mpd_status * status)
@@ -284,6 +291,7 @@ void mpd_status_free(struct mpd_status * status)
 	assert(status != NULL);
 
 	free(status->partition);
+    free(status->raw_audio_format);
 	free(status->error);
 	free(status);
 }
@@ -454,6 +462,14 @@ mpd_status_get_audio_format(const struct mpd_status *status)
 	return !mpd_audio_format_is_empty(&status->audio_format)
 		? &status->audio_format
 		: NULL;
+}
+
+const char *
+mpd_status_get_raw_audio_format(const struct mpd_status *status)
+{
+    assert(status != NULL);
+
+    return status->raw_audio_format;
 }
 
 unsigned

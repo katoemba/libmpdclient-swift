@@ -337,6 +337,14 @@ const struct mpd_audio_format *
 mpd_status_get_audio_format(const struct mpd_status *status);
 
 /**
+ * Returns raw audio format which MPD is currently playing.  May return
+ * NULL if MPD is not playing or if the audio format is unknown.
+ */
+mpd_pure
+const char *
+mpd_status_get_raw_audio_format(const struct mpd_status *status);
+
+/**
  * Returns 1 if mpd is updating, 0 otherwise
  */
 mpd_pure

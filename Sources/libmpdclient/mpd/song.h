@@ -194,6 +194,16 @@ const struct mpd_audio_format *
 mpd_song_get_audio_format(const struct mpd_song *song);
 
 /**
+ * Returns raw audio format as determined by MPD's decoder plugin.  May
+ * return NULL if the format is not available or unknown.
+ *
+ * @since libmpdclient 2.15
+ */
+mpd_pure
+const char *
+mpd_song_get_raw_audio_format(const struct mpd_song *song);
+
+/**
  * Begins parsing a new song.
  *
  * @param pair the first pair in this song (name must be "file")
